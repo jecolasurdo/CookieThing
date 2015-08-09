@@ -4,7 +4,7 @@
     <title>CookieThing</title>
 
     <script src="scripts/jquery-2.1.4.js"></script>
-    <script src="scripts/knockout-3.3.0.js"></script>
+    <script src="scripts/knockout-3.3.0.debug.js"></script>
     <script src="scripts/underscore.js"></script>
     <script src="scripts/bootstrap.js"></script>
     
@@ -38,16 +38,9 @@
                     <a href="#" class="list-group-item active">
                         Domains
                     </a>
-                    <div class="scrollable-list">
-                        <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                        <a href="#" class="list-group-item">Morbi leo risus</a>
-                        <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                        <a href="#" class="list-group-item">Vestibulum at eros</a>
-                        <a href="#" class="list-group-item">Vestibulum at eros</a>
-                        <a href="#" class="list-group-item">Vestibulum at eros</a>
-                        <a href="#" class="list-group-item">Vestibulum at eros</a>
-                        <a href="#" class="list-group-item">Vestibulum at eros</a>
-                        <a href="#" class="list-group-item">Vestibulum at eros</a>
+                    <div class="scrollable-list" data-bind="foreach: $data.domains">
+                        <div data-bind="text: $data"></div>
+                        <!--<a href="#" class="list-group-item" data-bind="title: $data"></a>-->
                     </div>
                 </div>
                 <div class="pull-right">

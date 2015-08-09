@@ -2,18 +2,18 @@
 /// <reference path="../../jquery-2.1.4.js" />
 /// <reference path="../../underscore.js" />
 
-
-var CookieThingViewModel = function (cookies) {
-    this.cookies = ko.observableArray(cookies);
+var CookieThingViewModel = function () {
+    this.cookies = ko.observableArray();
     this.domains = ko.computed(function () {
         return _.sortBy(
                    _.uniq(
-                       _.map(this.cookies(), function (cookie) {
+                       _.map(this.cookies()[0], function (cookie) {
                            return cookie.domain;
                        })), function (domain) { return domain; });
-        }, this);
+    }, this);
 }
 
-ko.applyBindings(
-    chrome.cookies.getAll({}, function (cookies) { var ctvm = new CookieThingViewModel(cookies); })
-);
+var ctvm = new CookieThingViewModel();
+chrome.cookies.getAll({}, function (cookie) { ctvm.cookies.push(cookie); });
+
+ko.applyBindings(ctvm);
