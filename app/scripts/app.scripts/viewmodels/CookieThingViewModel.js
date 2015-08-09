@@ -4,6 +4,9 @@
 
 var CookieThingViewModel = function () {
     this.cookies = ko.observableArray();
+    this.cookieNamesForSelectedDomain = ko.observable();
+    this.selectedCookie = ko.observable();
+    this.selectedDomain = ko.observable();
 
     this.domains = ko.computed(function () {
         return _.sortBy(
@@ -13,9 +16,9 @@ var CookieThingViewModel = function () {
                        })), function (domain) { return domain; });
     }, this);
 
-    this.cookieNamesForSelectedDomain = ko.observable();
 
     this.getCookiesNamesForDomain = function (domain) {
+        this.selectedDomain(domain);
         this.cookieNamesForSelectedDomain(
             _.map(
                    _.filter(this.cookies()[0], function (cookie) {
@@ -27,6 +30,19 @@ var CookieThingViewModel = function () {
             );
     }
 
+    this.setSelectedCookie = function (cookieName) {
+        selectedDomain = this.selectedDomain();
+        this.selectedCookie(
+            _.first(
+                _.filter(this.cookies()[0],
+                    function (cookie) {
+                        return cookie.name === cookieName
+                            && cookie.domain === selectedDomain;
+                    }
+                )
+            )
+        );
+    }
 
 }
 

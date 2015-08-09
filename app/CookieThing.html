@@ -53,7 +53,7 @@
                         Cookies
                     </a>
                     <div class="scrollable-list" data-bind="foreach: $data.cookieNamesForSelectedDomain">
-                        <a href="#" class="list-group-item" data-bind="text: $data"></a>
+                        <a href="#" class="list-group-item" data-bind="text: $data, click: $parent.setSelectedCookie($data)"></a>
                     </div>
                 </div>
                 <div class="pull-right">
@@ -69,7 +69,7 @@
                     <div class="col-sm-5ths">
                         <div class="input-group">
                             <span class="input-group-addon">Name</span>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" data-bind="value: selectedCookie().name">
                         </div>
                     </div>
                     <div class="col-sm-5ths">
