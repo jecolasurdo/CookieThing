@@ -196,9 +196,6 @@ FakesAssemblies/
 *.opt
 
 # Ignore config specifics
-YourMdb/YourMdb.Data.IntegrationTests/app.config
-YourMdb/YourMdb.HostClient.IntegrationTests/App.config
-YourMdb/YourMdb.ServiceHost.Console/app.config
-YourMdb/YourMdb.Web/web.config
+*.CookieThing.zip
 
 !ConfigBuilderValues.rsp
