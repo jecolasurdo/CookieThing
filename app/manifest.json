@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+
+  "name": "CookieThing",
+  "description": "This is an extension for managing cookies.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "img/icon.png",
+    "default_popup": "popup.html"
+  }
+}

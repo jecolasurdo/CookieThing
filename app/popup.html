@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+    <title>CookieThing</title>
+    <script src="scripts/jquery-2.1.4.js"></script>
+    <script src="scripts/knockout-3.3.0.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/popup.js"></script>
+    <link href="popup.css" rel="stylesheet" />
+    <link href="styles/bootstrap.css" rel="stylesheet" />
+    <link href="styles/bootstrap-theme.css" rel="stylesheet" />
+</head>
+<body>
+    <div style="margin: 10px 10px 10px 10px;">
+        <div style="margin-bottom: 10px;">
+            <button class="btn">
+                <span class="glyphicon glyphicon-refresh"></span>
+                Refresh
+            </button>
+            <span>last refreshed...</span>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">
+                        Domain Filters
+                    </a>
+                    <textarea style="width:100%;"></textarea>
+                </div>
+                <div class="pull-right">
+                    <button class="btn btn-xs">Clear</button>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">
+                        Domains
+                    </a>
+                    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                    <a href="#" class="list-group-item">Morbi leo risus</a>
+                    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                    <a href="#" class="list-group-item">Vestibulum at eros</a>
+                </div>
+                <div class="pull-right">
+                    <button class="btn btn-xs">Delete Selected</button>
+                    <button class="btn btn-xs btn-danger">Delete All</button>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">
+                        Cookies
+                    </a>
+                    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                    <a href="#" class="list-group-item">Morbi leo risus</a>
+                    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                    <a href="#" class="list-group-item">Vestibulum at eros</a>
+                </div>
+                <div class="pull-right">
+                    <button class="btn btn-xs">Delete Selected</button>
+                    <button class="btn btn-xs btn-danger">Delete All</button>
+                </div>
+            </div>
+        </div>
+        <div style="clear:both;">
+            <small>Cookie</small>
+            <div>
+                <div>
+                    <div class="pull-left" style="width:250px; margin-right:10px; margin-bottom: 10px;">
+                        <div class="input-group">
+                            <span class="input-group-addon" style="width:6em;">Domain</span>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="pull-left" style="width:250px; margin-right:10px; margin-bottom: 10px;">
+                        <div class="input-group">
+                            <span class="input-group-addon" style="width:6em;">Path</span>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="pull-left" style="width:250px; margin-right:10px; margin-bottom: 10px;">
+                        <div class="input-group">
+                            <span class="input-group-addon" style="width:6em;">Expiration</span>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="pull-left" style="width:250px; margin-right:10px; margin-bottom: 10px;">
+                        <div class="input-group">
+                            <span class="input-group-addon" style="width:6em;">Name</span>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="pull-left" style="width:250px; margin-right:10px; margin-bottom: 10px;">
+                        <div class="input-group">
+                            <span class="input-group-addon" style="width:6em;">Store ID</span>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div style="clear: both;">
+                    <div>Cookie Type</div>
+                    <div class="btn-group">
+                        <button class="btn btn-sm">
+                            Session
+                            <span class="glyphicon glyphicon-unchecked"></span>
+                        </button>
+                        <button class="btn btn-sm btn-default">
+                            Host-Only
+                            <span class="glyphicon glyphicon-check"></span>
+                        </button>
+                        <button class="btn btn-sm">
+                            Read-Only
+                            <span class="glyphicon glyphicon-unchecked"></span>
+                        </button>
+                        <button class="btn btn-sm">
+                            Secure
+                            <span class="glyphicon glyphicon-unchecked"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div style="clear:both;">
+                <div>
+                    <div>Value (Raw)</div>
+                    <textarea style="width: 100%;"></textarea>
+                </div>
+                <div>
+                    <div style="display: inline-block; width: 100%; position: relative;">
+                        <div class="pull-left" style="bottom: 0; position: absolute;">
+                            Value (Decoded)
+                        </div>
+                        <div class="pull-right">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn- dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Algorythm
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">Base64</a></li>
+                                    <li><a href="#">Base64 -> UrlEncode</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both;">
+                        <textarea style="width: 100%;"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pull-right">
+            <button class="btn">Set</button>
+            <button class="btn">Delete</button>
+            <button class="btn">Reload</button>
+        </div>
+    </div>
+</body>
+</html>
+
