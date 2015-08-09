@@ -41,6 +41,7 @@
   <ItemGroup>
     <Content Include="app\background.js" />
     <Content Include="app\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app\scripts\app.scripts\models\Cookie.js" />
     <Content Include="app\styles\bootstrap-theme.css" />
     <Content Include="app\styles\bootstrap.css" />
     <Content Include="app\img\icon.png" />
@@ -68,7 +69,9 @@
   <ItemGroup>
     <Content Include="app\manifest.json" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="app\scripts\app.scripts\viewmodels\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
