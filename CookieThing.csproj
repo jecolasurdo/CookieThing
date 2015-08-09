@@ -39,6 +39,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="app\background.js" />
     <Content Include="app\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="app\styles\bootstrap-theme.css" />
     <Content Include="app\styles\bootstrap.css" />

@@ -1,12 +1,19 @@
 {
-  "manifest_version": 2,
+    "manifest_version": 2,
 
-  "name": "CookieThing",
-  "description": "This is an extension for managing cookies.",
-  "version": "1.0",
+    "name": "CookieThing",
+    "description": "This is an extension for managing cookies.",
+    "version": "1.0",
 
-  "browser_action": {
-    "default_icon": "img/icon.png",
-    "default_popup": "popup.html"
-  }
+    "browser_action": {
+        "default_icon": "img/icon.png",
+        "default_title": "C is for cookie"
+    },
+
+    "background": {
+        "scripts": [ "background.js" ]
+    },
+
+    "permissions": [ "cookies", "tabs", "http://*/*", "https://*/*" ]
+
 }
