@@ -1,4 +1,10 @@
-﻿/* 5 column bootstrap layout without less or sass */
+﻿.scrollable-list {
+    height: auto;
+    max-height: 165px;
+    overflow-x: hidden;
+}
+
+/* 5 column bootstrap layout without less or sass */
 /* http://stackoverflow.com/a/22799354/3434541 */
 
 .col-xs-5ths,
