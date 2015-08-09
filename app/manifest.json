@@ -2,7 +2,7 @@
     "manifest_version": 2,
 
     "name": "CookieThing",
-    "description": "This is an extension for managing cookies.",
+    "description": "This is an extension for managing cookie things.",
     "version": "1.0",
 
     "browser_action": {

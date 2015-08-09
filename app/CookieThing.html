@@ -39,7 +39,7 @@
                         Domains
                     </a>
                     <div class="scrollable-list" data-bind="foreach: $data.domains">
-                        <a href="#" class="list-group-item" data-bind="text: $data"></a>
+                        <a href="#" class="list-group-item" data-bind="text: $data, click: $parent.getCookiesNamesForDomain($data)"></a>
                     </div>
                 </div>
                 <div class="pull-right">
@@ -52,8 +52,8 @@
                     <a href="#" class="list-group-item active">
                         Cookies
                     </a>
-                    <div class="scrollable-list">
-                        <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                    <div class="scrollable-list" data-bind="foreach: $data.cookieNamesForSelectedDomain">
+                        <a href="#" class="list-group-item" data-bind="text: $data"></a>
                     </div>
                 </div>
                 <div class="pull-right">

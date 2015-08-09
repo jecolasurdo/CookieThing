@@ -57,7 +57,6 @@
     <None Include="app\scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="app\scripts\jquery-2.1.4.js" />
     <Content Include="app\scripts\knockout-3.3.0.debug.js" />
-    <Content Include="app\scripts\knockout-3.3.0.js" />
     <Content Include="Properties\build\lib\Ionic.Zip.DLL" />
     <Content Include="Properties\build\lib\MSBuild.ExtensionPack.dll" />
     <Content Include="screenshots\screenshot.png" />

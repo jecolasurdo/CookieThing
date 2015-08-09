@@ -4,6 +4,7 @@
 
 var CookieThingViewModel = function () {
     this.cookies = ko.observableArray();
+
     this.domains = ko.computed(function () {
         return _.sortBy(
                    _.uniq(
@@ -11,6 +12,22 @@ var CookieThingViewModel = function () {
                            return cookie.domain;
                        })), function (domain) { return domain; });
     }, this);
+
+    this.cookieNamesForSelectedDomain = ko.observable();
+
+    this.getCookiesNamesForDomain = function (domain) {
+        this.cookieNamesForSelectedDomain(
+            _.map(
+                   _.filter(this.cookies()[0], function (cookie) {
+                       return cookie.domain === domain;
+                   }),
+                   function (cookie) {
+                       return cookie.name;
+                   })
+            );
+    }
+
+
 }
 
 var ctvm = new CookieThingViewModel();
