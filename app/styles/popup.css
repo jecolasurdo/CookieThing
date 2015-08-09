@@ -1,9 +1,17 @@
-﻿.full-width {
+﻿.page {
+    margin: 20px 50px 50px 20px;
+}
+
+.full-width {
     width: 100%;
 }
 
 .domain-filter {
-    min-height: 165px;
+    min-height: 160px;
+}
+
+.raw-value {
+    height: 100px;
 }
 
 .scrollable-list {
@@ -21,8 +29,8 @@
 .col-lg-5ths {
     position: relative;
     min-height: 1px;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 .col-xs-5ths {
