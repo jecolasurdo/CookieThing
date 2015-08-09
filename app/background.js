@@ -20,6 +20,6 @@
 }
 
 chrome.browserAction.onClicked.addListener(function (tab) {
-    var manager_url = chrome.extension.getURL("popup.html");
+    var manager_url = chrome.extension.getURL("CookieThing.html");
     focusOrCreateTab(manager_url);
 });
