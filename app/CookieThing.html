@@ -7,6 +7,7 @@
     <script src="scripts/knockout-3.3.0.debug.js"></script>
     <script src="scripts/underscore.js"></script>
     <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/app.scripts/models/Cookie.js"></script>
     
     <link href="styles/CookieThing.css" rel="stylesheet" />
     <link href="styles/bootstrap.css" rel="stylesheet" />
@@ -39,7 +40,7 @@
                         Domains
                     </a>
                     <div class="scrollable-list" data-bind="foreach: $data.domains">
-                        <a href="#" class="list-group-item" data-bind="text: $data, click: $parent.getCookiesNamesForDomain($data)"></a>
+                        <a href="#" class="list-group-item" data-bind="text: $data, click: $parent.selectedDomain($data)"></a>
                     </div>
                 </div>
                 <div class="pull-right">
@@ -53,7 +54,7 @@
                         Cookies
                     </a>
                     <div class="scrollable-list" data-bind="foreach: $data.cookieNamesForSelectedDomain">
-                        <a href="#" class="list-group-item" data-bind="text: $data, click: $parent.setSelectedCookie($data)"></a>
+                        <a href="#" class="list-group-item" data-bind="text: $data, click: $parent.selectedCookieName($data)"></a>
                     </div>
                 </div>
                 <div class="pull-right">
@@ -75,25 +76,25 @@
                     <div class="col-sm-5ths">
                         <div class="input-group">
                             <span class="input-group-addon">Domain</span>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" data-bind="value: $data.selectedCookie().domain">
                         </div>
                     </div>
                     <div class="col-sm-5ths">
                         <div class="input-group">
                             <span class="input-group-addon">Path</span>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" data-bind="value: selectedCookie().path">
                         </div>
                     </div>
                     <div class="col-sm-5ths">
                         <div class="input-group">
                             <span class="input-group-addon">Expiration</span>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" data-bind="value: selectedCookie().expiration">
                         </div>
                     </div>
                     <div class="col-sm-5ths">
                         <div class="input-group">
                             <span class="input-group-addon">Store ID</span>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" data-bind="value: selectedCookie().storeId">
                         </div>
                     </div>
                 </div>
