@@ -1,7 +1,7 @@
 ﻿/// <reference path="../../knockout-3.3.0.js" />d
 /// <reference path="../../jquery-2.1.4.js" />
 /// <reference path="../../underscore.js" />
-/// <reference path="../models/Cookie.js" />
+/// <reference path="../Models/Cookie.js" />
 
 var CookieThingViewModel = function () {
     this.cookies = ko.observableArray([]);
@@ -43,7 +43,7 @@ var CookieThingViewModel = function () {
     }, this);
 
     this.selectedCookie = ko.computed(function () {
-        return new CookieThing.Cookie(this.selectedRawCookie());
+        return new CookieThing.Models.Cookie(this.selectedRawCookie());
     }, this);
 
 }

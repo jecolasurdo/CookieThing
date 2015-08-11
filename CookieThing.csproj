@@ -41,6 +41,7 @@
   <ItemGroup>
     <Content Include="app\background.js" />
     <Content Include="app\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app\scripts\app.scripts\models\Codecs.js" />
     <Content Include="app\scripts\app.scripts\models\Cookie.js" />
     <Content Include="app\scripts\app.scripts\viewmodels\CookieThingViewModel.js" />
     <Content Include="app\scripts\underscore.js" />
