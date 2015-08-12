@@ -43,6 +43,7 @@
     <Content Include="app\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="app\scripts\CookieThing\Codecs\Base64Codec.js" />
     <Content Include="app\scripts\CookieThing\Codecs\Base64UrlCodec.js" />
+    <Content Include="app\scripts\CookieThing\Codecs\Manifest.js" />
     <Content Include="app\scripts\CookieThing\Codecs\UrlEncodingCodec.js" />
     <Content Include="app\scripts\CookieThing\Models\Cookie.js" />
     <Content Include="app\scripts\CookieThing\ViewModels\CookieThingViewModel.js" />

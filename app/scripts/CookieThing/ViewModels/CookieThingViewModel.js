@@ -2,6 +2,7 @@
 /// <reference path="../../jquery-2.1.4.js" />
 /// <reference path="../../underscore.js" />
 /// <reference path="../Models/Cookie.js" />
+/// <reference path="../Codecs/Manifest.js" />
 
 var CookieThing;
 (function (CookieThing) {
@@ -48,6 +49,9 @@ var CookieThing;
             this.selectedCookie = ko.computed(function () {
                 return new CookieThing.Models.Cookie(this.selectedRawCookie());
             }, this);
+
+            this.codecs = CookieThing.Codecs.Manifest;
+            this.codecNames = _.map(CookieThing.Codecs.Manifest, function (codec) { return codec.FriendlyName });
 
         }
     })(CookieThing.ViewModels || (CookieThing.ViewModels = {}))
