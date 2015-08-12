@@ -129,9 +129,8 @@
                                     Algorythm
                                     <span class="caret"></span>
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    <li><a href="#">Base64</a></li>
-                                    <li><a href="#">Base64 -> UrlEncode</a></li>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" data-bind="foreach: $data.codecNames">
+                                    <li href="#" class="list-group-item" data-bind="text: $data, click: function() { alert($data) }"></li>
                                 </ul>
                             </div>
                         </div>
