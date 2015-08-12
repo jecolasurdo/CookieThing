@@ -2,14 +2,6 @@
 <html>
 <head>
     <title>CookieThing</title>
-
-    <script src="scripts/jquery-2.1.4.js"></script>
-    <script src="scripts/knockout-3.3.0.debug.js"></script>
-    <script src="scripts/underscore.js"></script>
-    <script src="scripts/bootstrap.js"></script>
-    <script src="scripts/CookieThing/Models/Cookie.js"></script>
-    <script src="scripts/CookieThing/Codecs/Base64.js"></script>
-
     <link href="styles/CookieThing.css" rel="stylesheet" />
     <link href="styles/bootstrap.css" rel="stylesheet" />
     <link href="styles/bootstrap-theme.css" rel="stylesheet" />
@@ -157,7 +149,21 @@
         </div>
     </div>
 
+    <!-- Frameworks -->
+    <script src="scripts/jquery-2.1.4.js"></script>
+    <script src="scripts/knockout-3.3.0.debug.js"></script>
+    <script src="scripts/underscore.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+
+    <!-- Codecs -->
+    <script src="scripts/CookieThing/Codecs/Base64.js"></script>
+    <script src="scripts/CookieThing/Codecs/UrlEncodingCodec.js"></script>
+    <script src="scripts/CookieThing/Codecs/Base64UrlCodec.js"></script>
+    
+    <!-- Internals -->
+    <script src="scripts/CookieThing/Models/Cookie.js"></script>
     <script src="scripts/CookieThing/ViewModels/CookieThingViewModel.js"></script>
+
 </body>
 </html>
 

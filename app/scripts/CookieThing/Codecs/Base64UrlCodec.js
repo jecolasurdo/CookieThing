@@ -1,21 +1,23 @@
-﻿/// <reference path="Cookie.js" />
-var CookieThing;
+﻿var CookieThing;
 (function (CookieThing) {
     (function (Codecs) {
-        (function (Base64) {
-            Base64.Name = 'Base64';
+        Codecs.Base64UrlCodec = function () {
 
-            Base64.Encode = function (decodedValue) {
+            this.FriendlyName = 'Base64-Url Encoding';
+
+            this.Description = 'Converts to and from a Base64 -> URL encoded string.'
+
+            this.Encode = function (decodedValue) {
                 var encodedValue = decodedValue;
                 return encodedValue;
             }
 
-            Base64.Decode = function (encodedValue) {
+            this.Decode = function (encodedValue) {
                 var decodedValue = encodedValue;
                 return decodedValue;
             }
-        })(Codecs.Base64 || (Codecs.Base64 = {}));
-        var Base64 = Codecs.Base64;
+
+        }
     })(CookieThing.Codecs || (CookieThing.Codecs = {}));
     var Codecs = CookieThing.Codecs;
 })(CookieThing || (CookieThing = {}));
