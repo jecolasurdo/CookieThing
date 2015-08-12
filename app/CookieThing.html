@@ -125,12 +125,13 @@
                         </div>
                         <div class="pull-right">
                             <div class="dropdown">
+                                Algorithm:
                                 <button class="btn btn-sm btn- dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    Algorythm
+                                    <span data-bind="text: $data.selectedCodecName"></span>
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" data-bind="foreach: $data.codecNames">
-                                    <li href="#" class="list-group-item" data-bind="text: $data, click: function() { alert($data) }"></li>
+                                    <li href="#" class="list-group-item" data-bind="text: $data, click: $parent.selectedCodecName($data)"></li>
                                 </ul>
                             </div>
                         </div>
@@ -159,7 +160,7 @@
     <script src="scripts/CookieThing/Codecs/UrlEncodingCodec.js"></script>
     <script src="scripts/CookieThing/Codecs/Base64UrlCodec.js"></script>
     <script src="scripts/CookieThing/Codecs/Manifest.js"></script>
-    
+
     <!-- Internals -->
     <script src="scripts/CookieThing/Models/Cookie.js"></script>
     <script src="scripts/CookieThing/ViewModels/CookieThingViewModel.js"></script>

@@ -11,6 +11,7 @@ var CookieThing;
             this.cookies = ko.observableArray([]);
             this.selectedCookieName = ko.observable('');
             this.selectedDomain = ko.observable('');
+            this.selectedCodecName = ko.observable({});
 
             this.domains = ko.computed(
                 function () {
@@ -52,7 +53,7 @@ var CookieThing;
 
             this.codecs = CookieThing.Codecs.Manifest;
             this.codecNames = _.map(CookieThing.Codecs.Manifest, function (codec) { return codec.FriendlyName });
-
+            this.selectedCodecName(this.codecNames[0]);
         }
     })(CookieThing.ViewModels || (CookieThing.ViewModels = {}))
     var ViewModels = CookieThing.ViewModels;
