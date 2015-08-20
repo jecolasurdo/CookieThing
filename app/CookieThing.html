@@ -116,7 +116,7 @@
             <div style="clear:both;">
                 <div>
                     <div>Value (Raw)</div>
-                    <textarea class="full-width raw-value" data-bind="value: selectedCookie().value"></textarea>
+                    <textarea class="full-width raw-value" data-bind="textInput: selectedCookie().value"></textarea>
                 </div>
                 <div>
                     <div style="display: inline-block; width: 100%; position: relative;">
@@ -137,7 +137,7 @@
                         </div>
                     </div>
                     <div style="clear:both;">
-                        <textarea class="full-width raw-value"></textarea>
+                        <textarea class="full-width raw-value" data-bind="textInput: selectedCookieDecodedValue"></textarea>
                     </div>
                 </div>
             </div>

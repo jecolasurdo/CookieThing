@@ -8,6 +8,7 @@ var CookieThing;
 (function (CookieThing) {
     (function (ViewModels) {
         ViewModels.CookieThingViewModel = function () {
+            var self = this;
             this.cookies = ko.observableArray([]);
             this.selectedCookieName = ko.observable('');
             this.selectedDomain = ko.observable('');
@@ -51,9 +52,32 @@ var CookieThing;
                 return new CookieThing.Models.Cookie(this.selectedRawCookie());
             }, this);
 
-            this.codecs = CookieThing.Codecs.Manifest;
             this.codecNames = _.map(CookieThing.Codecs.Manifest, function (codec) { return codec.FriendlyName });
+
             this.selectedCodecName(this.codecNames[0]);
+
+            this.selectedCodec = ko.computed(function () {
+                return _.filter(CookieThing.Codecs.Manifest, function (codec) { return codec.FriendlyName === this.selectedCodecName() }, this)[0];
+            }, this);
+
+            var selectedCookieValue = ko.computed(function () {
+                return self.selectedCookie().value();
+            });
+
+            this.selectedCookieDecodedValue = ko.computed({
+                read: function () {
+                    var encodedValue = self.selectedCookie().value();
+                    var decodedValue = self.selectedCodec().Decode(encodedValue);
+                    return decodedValue;
+                },
+                write: function (decodedValue) {
+                    var encodedValue = self.selectedCodec().Encode(decodedValue);
+                    ko.ignoreDependencies(function () {
+                        self.selectedCookie().value(encodedValue);
+                    });
+                }
+            });
+
         }
     })(CookieThing.ViewModels || (CookieThing.ViewModels = {}))
     var ViewModels = CookieThing.ViewModels;

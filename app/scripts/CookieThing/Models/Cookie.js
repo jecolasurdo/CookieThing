@@ -1,33 +1,31 @@
-﻿var CookieThing;
+﻿/// <reference path="../../knockout-3.3.0.debug.js" />
+
+var CookieThing;
 (function (CookieThing) {
     (function (Models) {
-        Models.DefaultCookie = {
-            name: "",
-            value: "",
-            domain: "",
-            hostOnly: false,
-            path: "",
-            secure: false,
-            httpOnly: false,
-            session: false,
-            expirationDate: 0,
-            storeId: ""
-        }
-
         Models.Cookie = function (rawCookie) {
             if (rawCookie) {
-                this.name = rawCookie.name;
-                this.value = rawCookie.value;
-                this.domain = rawCookie.domain;
-                this.hostOnly = rawCookie.hostOnly;
-                this.path = rawCookie.path;
-                this.secure = rawCookie.secure;
-                this.httpOnly = rawCookie.httpOnly;
-                this.session = rawCookie.session;
-                this.expirationDate = rawCookie.expirationDate;
-                this.storeId = rawCookie.storeId;
+                this.name = ko.observable(rawCookie.name);
+                this.value = ko.observable(rawCookie.value);
+                this.domain = ko.observable(rawCookie.domain);
+                this.hostOnly = ko.observable(rawCookie.hostOnly);
+                this.path = ko.observable(rawCookie.path);
+                this.secure = ko.observable(rawCookie.secure);
+                this.httpOnly = ko.observable(rawCookie.httpOnly);
+                this.session = ko.observable(rawCookie.session);
+                this.expirationDate = ko.observable(rawCookie.expirationDate);
+                this.storeId = ko.observable(rawCookie.storeId);
             } else {
-                return CookieThing.DefaultCookie;
+                this.name = ko.observable('');
+                this.value = ko.observable('');
+                this.domain = ko.observable('');
+                this.hostOnly = ko.observable(false);
+                this.path = ko.observable('');
+                this.secure = ko.observable(false);
+                this.httpOnly = ko.observable(false);
+                this.session = ko.observable(false);
+                this.expirationDate = ko.observable(0);
+                this.storeId = ko.observable('');
             }
         }
     })(CookieThing.Models || (CookieThing.Models = {}))
