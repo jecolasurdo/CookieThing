@@ -61,6 +61,14 @@
     <None Include="app\scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="app\scripts\jquery-2.1.4.js" />
     <Content Include="app\scripts\knockout-3.3.0.debug.js" />
+    <Content Include="jasmine\lib\jasmine-2.3.4\boot.js" />
+    <Content Include="jasmine\lib\jasmine-2.3.4\console.js" />
+    <Content Include="jasmine\lib\jasmine-2.3.4\jasmine-html.js" />
+    <Content Include="jasmine\lib\jasmine-2.3.4\jasmine.css" />
+    <Content Include="jasmine\lib\jasmine-2.3.4\jasmine.js" />
+    <Content Include="jasmine\lib\jasmine-2.3.4\jasmine_favicon.png" />
+    <Content Include="jasmine\SpecRunner.html" />
+    <Content Include="jasmine\Specifications\CookieThing\Models\Cookie.Specifications.js" />
     <Content Include="Properties\build\lib\Ionic.Zip.DLL" />
     <Content Include="Properties\build\lib\MSBuild.ExtensionPack.dll" />
     <Content Include="screenshots\screenshot.png" />
