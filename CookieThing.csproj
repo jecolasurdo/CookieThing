@@ -46,6 +46,7 @@
     <Content Include="app\scripts\CookieThing\Codecs\Manifest.js" />
     <Content Include="app\scripts\CookieThing\Codecs\UrlEncodingCodec.js" />
     <Content Include="app\scripts\CookieThing\Models\Cookie.js" />
+    <Content Include="app\scripts\CookieThing\Models\RawCookie.js" />
     <Content Include="app\scripts\CookieThing\ViewModels\CookieThingViewModel.js" />
     <Content Include="app\scripts\underscore.js" />
     <Content Include="app\styles\bootstrap-theme.css" />
@@ -67,9 +68,10 @@
     <Content Include="jasmine\lib\jasmine-2.3.4\jasmine.css" />
     <Content Include="jasmine\lib\jasmine-2.3.4\jasmine.js" />
     <Content Include="jasmine\lib\jasmine-2.3.4\jasmine_favicon.png" />
-    <Content Include="jasmine\Specifications\CookieThing\Codecs\Base64Codec.Specifications.js" />
+    <Content Include="jasmine\Specifications\CookieThing\Codecs\CodecSpecifications.js" />
+    <Content Include="jasmine\Specifications\CookieThing\ViewModels\ViewModelSpecifications.js" />
     <Content Include="jasmine\SpecRunner.html" />
-    <Content Include="jasmine\Specifications\CookieThing\Models\Cookie.Specifications.js" />
+    <Content Include="jasmine\Specifications\CookieThing\Models\CookieSpecifications.js" />
     <Content Include="Properties\build\lib\Ionic.Zip.DLL" />
     <Content Include="Properties\build\lib\MSBuild.ExtensionPack.dll" />
     <Content Include="screenshots\screenshot.png" />

@@ -1,6 +1,4 @@
-﻿// This can be handled through reflection, but it'll be manual in this iteration.
-
-/// <reference path="Base64Codec.js" />
+﻿/// <reference path="Base64Codec.js" />
 /// <reference path="Base64UrlCodec.js" />
 /// <reference path="UrlEncodingCodec.js" />
 

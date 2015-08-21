@@ -60,10 +60,6 @@ var CookieThing;
                 return _.filter(CookieThing.Codecs.Manifest, function (codec) { return codec.FriendlyName === this.selectedCodecName() }, this)[0];
             }, this);
 
-            var selectedCookieValue = ko.computed(function () {
-                return self.selectedCookie().value();
-            });
-
             this.selectedCookieDecodedValue = ko.computed({
                 read: function () {
                     var encodedValue = self.selectedCookie().value();
