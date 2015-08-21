@@ -8,11 +8,11 @@
             this.Description = 'Converts to and from a Base64 encoded string.'
 
             this.Encode = function (decodedValue) {
-                return decodedValue * 2;
+                return btoa(decodedValue);
             }
 
             this.Decode = function (encodedValue) {
-                return encodedValue / 2;
+                return atob(encodedValue);
             }
 
         }

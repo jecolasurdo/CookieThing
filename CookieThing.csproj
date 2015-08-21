@@ -67,6 +67,7 @@
     <Content Include="jasmine\lib\jasmine-2.3.4\jasmine.css" />
     <Content Include="jasmine\lib\jasmine-2.3.4\jasmine.js" />
     <Content Include="jasmine\lib\jasmine-2.3.4\jasmine_favicon.png" />
+    <Content Include="jasmine\Specifications\CookieThing\Codecs\Base64Codec.Specifications.js" />
     <Content Include="jasmine\SpecRunner.html" />
     <Content Include="jasmine\Specifications\CookieThing\Models\Cookie.Specifications.js" />
     <Content Include="Properties\build\lib\Ionic.Zip.DLL" />
