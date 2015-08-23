@@ -1,6 +1,6 @@
 ﻿/// <reference path="../../../SpecRunner.html" />
 
-describe("Within the codecs", function () {
+describe("For the codecs in general", function () {
 
     describe("the Base64Codec", function () {
         it("encodes values properly.", function () {
@@ -20,12 +20,12 @@ describe("Within the codecs", function () {
         });
     });
 
-    xdescribe("the Base64UrlCodec", function () {
-        xit("does nothing at the moment.");
+    describe("the Base64UrlCodec", function () {
+        it("does nothing at the moment.");
     });
 
-    xdescribe("the UrlEncodingCodec", function() {
-        xit("does nothing at the moment.")
+    describe("the UrlEncodingCodec", function() {
+        it("does nothing at the moment.")
     });
 
 });

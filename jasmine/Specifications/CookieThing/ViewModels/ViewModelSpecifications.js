@@ -1,68 +1,89 @@
 ﻿/// <reference path="../../../SpecRunner.html" />
 
-describe("Within the viewmodels", function () {
+describe("The viewmodel in general", function () {
 
-    describe("domains viewmodel", function () {
+    it("must be initialized with an observable array of cookie objects (not a raw cookie object array).", function () {
+        
+        expect(function () {
+            var notTheRightObjectType = { someProperty: 'wtf' };
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(notTheRightObjectType);
+        }).toThrow(new Error("The viewmodel must be initialized with an observable array of cookie objects."));
+  
+        var theCorrectObjectType = new CookieThing.Models.Cookie();
+        var viewModel = new CookieThing.ViewModels.CookieThingViewModel(theCorrectObjectType);
+    });
 
-        it("domain names are extracted from the list of cookies", function () {
-            var rawCookieOne = new CookieThing.Models.RawCookie();
-            rawCookieOne.domain = 'DomainOne';
-            var rawCookieTwo = new CookieThing.Models.RawCookie();
-            rawCookieTwo.domain = 'DomainTwo';
+});
 
-            var ctvm = new CookieThing.ViewModels.CookieThingViewModel();
-            ctvm.cookies.push([rawCookieOne, rawCookieTwo]);
+describe("For cookies in general", function () {
 
-            expect(ctvm.domains()).toEqual(['DomainOne', 'DomainTwo']);
-        });
+    describe("the cookie list", function () {
 
-        xit("setting a selected domain also sets the cookie names for that domain.", function () {
+        it("is set by default.")
 
-        });
+        it("is sorted alphabetically by cookie name.")
 
-        xit("the first domain is selected by default.", function () {
-
-        });
-
-        xit("setting the selected domain and seleced cookie name also sets the selected raw cookie.", function () {
-
-        });
+        it("has the first cookie selected by default.");
 
     });
 
-    describe("cookies viewmodel", function () {
+    describe("selecting a cookie", function () {
 
-        xit("the first cookie name is selected by default.", function () {
-
-        });
-
-        xit("when the raw cookie is set, the selected cookie model is also set.", function () {
-
-        });
+        it("has its value decoded by the selected codec.");
 
     });
 
-    describe("codecs viewmodel", function () {
+});
 
-        xit("the codec names list is set by default.", function () {
+describe("For domains in general", function () {
 
-        });
+    describe("the domain list", function () {
 
-        xit("the first codec is selected by default.", function () {
+        it("is initialized from the list of cookies.");
 
-        });
+        it("is sorted alphabetically.");
 
-        xit("setting the selected codec decodes the selected cookie's raw value.", function () {
+        it("has the first domain selected by default.");
 
-        });
+    });
 
-        xit("changing the selected cookie raw value decodes the raw value.", function () {
+    describe("selecting a domain", function() {
 
-        });
+        it("sets the cookies for that domain.");
 
-        xit("changing the selected cookie decoded value encodes the value.", function () {
+        it("sets the first cookie in the domain as the selected cookie.");
 
-        });
+    });
+
+});
+
+describe("For codecs in general", function () {
+
+    describe("the codecs list", function () {
+
+        it("is set by default.");
+
+        it("is sorted alphabetically by friendly name.")
+
+        it("has the first codec selected by default.");
+
+    });
+
+    describe("Selecting a codec", function () {
+
+        it("sets the decoded value of the cookie.");
+
+    });
+
+    describe("Changing the raw value of the selected cookie", function () {
+    
+        it("decodes the raw value.");
+
+    });
+
+    describe("Changing the decoded value of the selected cookie", function () {
+
+        it("encodes the raw value.");
 
     });
 
