@@ -16,7 +16,9 @@ var CookieThing;
                 throw new Error("The view model must be initialized with an observable array of cookies.");
             }
 
-            this.Cookies = cookies;
+            this.Cookies = ko.computed(function () {
+                return _.sortBy(cookies(), function (cookie) { return cookie.name(); });
+            });
 
         }
     })(CookieThing.ViewModels || (CookieThing.ViewModels = {}))
