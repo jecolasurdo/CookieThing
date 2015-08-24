@@ -114,7 +114,19 @@ describe("For domains in general", function () {
             expect(viewModel.domainNames()).toEqual(['domainA', 'domainB', 'domainC']);
         });
 
-        it("has the first domain selected by default.");
+        it("has the first domain selected by default.", function () {
+            var cookieA = new CookieThing.Models.Cookie();
+            cookieA.domain('domainA');
+            var cookieB = new CookieThing.Models.Cookie();
+            cookieB.domain('domainB');
+            var cookieC = new CookieThing.Models.Cookie();
+            cookieC.domain('domainC');
+
+            var cookies = ko.observableArray([cookieC, cookieA, cookieB]);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
+
+            expect(viewModel.selectedDomainName()).toEqual('domainA');
+        });
 
     });
 

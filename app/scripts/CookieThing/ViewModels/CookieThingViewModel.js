@@ -30,6 +30,8 @@ var CookieThing;
                    , function (domainName) { return domainName; })
                 );
 
+            this.selectedDomainName = ko.observable(_.first(viewModel.domainNames()));
+
         }
     })(CookieThing.ViewModels || (CookieThing.ViewModels = {}))
     var ViewModels = CookieThing.ViewModels;
