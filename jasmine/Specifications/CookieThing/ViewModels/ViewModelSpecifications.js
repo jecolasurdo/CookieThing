@@ -69,7 +69,7 @@ describe("For cookies in general", function () {
             var cookies = ko.observableArray([cookieC, cookieA, cookieB]);
             var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
 
-            expect(viewModel.selectedCookie()).toBe(cookieA);
+            expect(viewModel.SelectedCookie()).toBe(cookieA);
         });
 
     });
@@ -97,7 +97,7 @@ describe("For domains in general", function () {
             var cookies = ko.observableArray([cookieC, cookieA, cookieB]);
             var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
 
-            expect(viewModel.domainNames()).toEqual(['domainA', 'domainB', 'domainC']);
+            expect(viewModel.DomainNames()).toEqual(['domainA', 'domainB', 'domainC']);
         });
 
         it("is sorted alphabetically.", function () {
@@ -111,7 +111,7 @@ describe("For domains in general", function () {
             var cookies = ko.observableArray([cookieC, cookieA, cookieB]);
             var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
 
-            expect(viewModel.domainNames()).toEqual(['domainA', 'domainB', 'domainC']);
+            expect(viewModel.DomainNames()).toEqual(['domainA', 'domainB', 'domainC']);
         });
 
         it("has the first domain selected by default.", function () {
@@ -125,14 +125,32 @@ describe("For domains in general", function () {
             var cookies = ko.observableArray([cookieC, cookieA, cookieB]);
             var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
 
-            expect(viewModel.selectedDomainName()).toEqual('domainA');
+            expect(viewModel.SelectedDomainName()).toEqual('domainA');
         });
 
     });
 
     describe("selecting a domain", function() {
 
-        it("sets the cookies for that domain.");
+        it("sets the cookies for that domain.", function () {
+            var cookieA = new CookieThing.Models.Cookie();
+            cookieA.name('cookieA');
+            cookieA.domain('domain1');
+
+            var cookieB = new CookieThing.Models.Cookie();
+            cookieB.name('cookieB');
+            cookieB.domain('domain2');
+
+            var cookieC = new CookieThing.Models.Cookie();
+            cookieC.name('cookieC');
+            cookieC.domain('domain2');
+
+            var cookies = ko.observableArray([cookieA, cookieB, cookieC]);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
+            viewModel.SelectedDomainName('domain2');
+
+            expect(viewModel.CookiesForSelectedDomain()).toEqual([cookieB, cookieC])      
+        });
 
         it("sets the first cookie in the domain as the selected cookie.");
 

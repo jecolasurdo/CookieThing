@@ -22,15 +22,21 @@ var CookieThing;
                 return _.sortBy(cookies(), function (cookie) { return cookie.name(); });
             });
 
-            this.selectedCookie = ko.observable(_.first(viewModel.Cookies()));
+            this.SelectedCookie = ko.observable(_.first(viewModel.Cookies()));
 
-            this.domainNames = ko.observableArray(
+            this.DomainNames = ko.observableArray(
                 _.sortBy(
                     _.map(viewModel.Cookies(), function (cookie) { return cookie.domain(); })
                    , function (domainName) { return domainName; })
                 );
 
-            this.selectedDomainName = ko.observable(_.first(viewModel.domainNames()));
+            this.SelectedDomainName = ko.observable(_.first(viewModel.DomainNames()));
+
+            this.CookiesForSelectedDomain = ko.computed(function () {
+                return _.filter(viewModel.Cookies(), function (cookie) {
+                    return cookie.domain() === viewModel.SelectedDomainName();
+                });
+            });
 
         }
     })(CookieThing.ViewModels || (CookieThing.ViewModels = {}))
