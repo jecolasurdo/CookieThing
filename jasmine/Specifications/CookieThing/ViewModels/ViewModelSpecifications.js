@@ -86,9 +86,33 @@ describe("For domains in general", function () {
 
     describe("the domain list", function () {
 
-        it("is initialized from the list of cookies.");
+        it("is initialized from the list of cookies.", function () {
+            var cookieA = new CookieThing.Models.Cookie();
+            cookieA.domain('domainA');
+            var cookieB = new CookieThing.Models.Cookie();
+            cookieB.domain('domainB');
+            var cookieC = new CookieThing.Models.Cookie();
+            cookieC.domain('domainC');
 
-        it("is sorted alphabetically.");
+            var cookies = ko.observableArray([cookieC, cookieA, cookieB]);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
+
+            expect(viewModel.domainNames()).toEqual(['domainA', 'domainB', 'domainC']);
+        });
+
+        it("is sorted alphabetically.", function () {
+            var cookieA = new CookieThing.Models.Cookie();
+            cookieA.domain('domainA');
+            var cookieB = new CookieThing.Models.Cookie();
+            cookieB.domain('domainB');
+            var cookieC = new CookieThing.Models.Cookie();
+            cookieC.domain('domainC');
+
+            var cookies = ko.observableArray([cookieC, cookieA, cookieB]);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
+
+            expect(viewModel.domainNames()).toEqual(['domainA', 'domainB', 'domainC']);
+        });
 
         it("has the first domain selected by default.");
 

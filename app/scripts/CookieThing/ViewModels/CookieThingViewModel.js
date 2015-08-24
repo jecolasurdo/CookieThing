@@ -14,7 +14,7 @@ var CookieThing;
                 throw new Error("The view model must be initialized with an observable array.");
             }
 
-            if (_.any(cookies(), function(cookie){ return !(cookie instanceof CookieThing.Models.Cookie) })) {
+            if (_.any(cookies(), function (cookie) { return !(cookie instanceof CookieThing.Models.Cookie) })) {
                 throw new Error("The view model must be initialized with an observable array of cookies.");
             }
 
@@ -23,6 +23,12 @@ var CookieThing;
             });
 
             this.selectedCookie = ko.observable(_.first(viewModel.Cookies()));
+
+            this.domainNames = ko.observableArray(
+                _.sortBy(
+                    _.map(viewModel.Cookies(), function (cookie) { return cookie.domain(); })
+                   , function (domainName) { return domainName; })
+                );
 
         }
     })(CookieThing.ViewModels || (CookieThing.ViewModels = {}))
