@@ -2,15 +2,28 @@
 
 describe("The viewmodel in general", function () {
 
-    it("must be initialized with an observable array of cookie objects (not a raw cookie object array).", function () {
-        
+    it("must be initialized with an observable array.", function () {
         expect(function () {
             var notTheRightObjectType = { someProperty: 'wtf' };
             var viewModel = new CookieThing.ViewModels.CookieThingViewModel(notTheRightObjectType);
-        }).toThrow(new Error("The viewmodel must be initialized with an observable array of cookie objects."));
-  
-        var theCorrectObjectType = new CookieThing.Models.Cookie();
+        }).toThrow(new Error("The view model must be initialized with an observable array."));
+    });
+
+    it("must be initialized with an observable array of cookie objects.", function () {
+        expect(function () {
+            var arrayOfTheWrongType = ko.observableArray(['wrong type']);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(arrayOfTheWrongType);
+        }).toThrow(new Error("The view model must be initialized with an observable array of cookies."));
+    });
+
+    it("doesn't throw an exception when initialized with the correct parameter type.", function () {
+        var theCorrectObjectType = ko.observableArray([new CookieThing.Models.Cookie()]);
         var viewModel = new CookieThing.ViewModels.CookieThingViewModel(theCorrectObjectType);
+    });
+
+    it("doesn't throw an exception when there are no cookies available.", function () {
+        var noCookiesPresent = ko.observableArray([]);
+        var viewModel = new CookieThing.ViewModels.CookieThingViewModel(noCookiesPresent);
     });
 
 });
@@ -19,7 +32,17 @@ describe("For cookies in general", function () {
 
     describe("the cookie list", function () {
 
-        it("is set by default.")
+        it("is set by default.", function () {
+            var cookieOne = new CookieThing.Models.Cookie();
+            cookieOne.name('cookieOne');
+            var cookieTwo = new CookieThing.Models.Cookie();
+            cookieTwo.name('cookieTwo');
+
+            var cookies = ko.observableArray([cookieOne, cookieTwo]);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
+
+            expect(viewModel.Cookies().length).toEqual(2);
+        });
 
         it("is sorted alphabetically by cookie name.")
 

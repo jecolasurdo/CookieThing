@@ -7,7 +7,16 @@
 var CookieThing;
 (function (CookieThing) {
     (function (ViewModels) {
-        ViewModels.CookieThingViewModel = function () {
+        ViewModels.CookieThingViewModel = function (cookies) {
+            if (!ko.isObservable(cookies)) {
+                throw new Error("The view model must be initialized with an observable array.");
+            }
+
+            if (_.any(cookies(), function(cookie){ return !(cookie instanceof CookieThing.Models.Cookie) })) {
+                throw new Error("The view model must be initialized with an observable array of cookies.");
+            }
+
+            this.Cookies = cookies;
 
         }
     })(CookieThing.ViewModels || (CookieThing.ViewModels = {}))
