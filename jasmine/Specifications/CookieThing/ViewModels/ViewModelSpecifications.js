@@ -58,7 +58,19 @@ describe("For cookies in general", function () {
             expect(viewModel.Cookies()).toEqual([cookieA, cookieB, cookieC]);
         });
 
-        it("has the first cookie selected by default.");
+        it("has the first cookie selected by default.", function () {
+            var cookieA = new CookieThing.Models.Cookie();
+            cookieA.name('cookieA');
+            var cookieB = new CookieThing.Models.Cookie();
+            cookieB.name('cookieB');
+            var cookieC = new CookieThing.Models.Cookie();
+            cookieC.name('cookieC');
+
+            var cookies = ko.observableArray([cookieC, cookieA, cookieB]);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
+
+            expect(viewModel.selectedCookie()).toBe(cookieA);
+        });
 
     });
 

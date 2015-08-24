@@ -8,6 +8,8 @@ var CookieThing;
 (function (CookieThing) {
     (function (ViewModels) {
         ViewModels.CookieThingViewModel = function (cookies) {
+            var viewModel = this;
+
             if (!ko.isObservable(cookies)) {
                 throw new Error("The view model must be initialized with an observable array.");
             }
@@ -19,6 +21,8 @@ var CookieThing;
             this.Cookies = ko.computed(function () {
                 return _.sortBy(cookies(), function (cookie) { return cookie.name(); });
             });
+
+            this.selectedCookie = ko.observable(_.first(viewModel.Cookies()));
 
         }
     })(CookieThing.ViewModels || (CookieThing.ViewModels = {}))
