@@ -152,7 +152,25 @@ describe("For domains in general", function () {
             expect(viewModel.CookiesForSelectedDomain()).toEqual([cookieB, cookieC])      
         });
 
-        it("sets the first cookie in the domain as the selected cookie.");
+        it("sets the first cookie in the domain as the selected cookie.", function () {
+            var cookieA = new CookieThing.Models.Cookie();
+            cookieA.name('cookieA');
+            cookieA.domain('domain1');
+
+            var cookieB = new CookieThing.Models.Cookie();
+            cookieB.name('cookieB');
+            cookieB.domain('domain2');
+
+            var cookieC = new CookieThing.Models.Cookie();
+            cookieC.name('cookieC');
+            cookieC.domain('domain2');
+
+            var cookies = ko.observableArray([cookieA, cookieB, cookieC]);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
+            viewModel.SelectedDomainName('domain2');
+
+            expect(viewModel.SelectedCookie().name()).toEqual(cookieB.name())
+        });
 
     });
 

@@ -30,11 +30,23 @@ var CookieThing;
                    , function (domainName) { return domainName; })
                 );
 
-            this.SelectedDomainName = ko.observable(_.first(viewModel.DomainNames()));
+            var _selectedDomainName = ko.observable(_.first(viewModel.DomainNames()));
+            this.SelectedDomainName = ko.computed({
+                read: function () {
+                    return _selectedDomainName();
+                },
+                write: function (value) {                    
+                    _selectedDomainName(value); 
+                    var cookiesForSelectedDomain = _.filter(viewModel.Cookies(), function (cookie) {
+                        return cookie.domain() === _selectedDomainName();
+                    });
+                    viewModel.SelectedCookie(_.first(cookiesForSelectedDomain));
+                }
+            });
 
             this.CookiesForSelectedDomain = ko.computed(function () {
                 return _.filter(viewModel.Cookies(), function (cookie) {
-                    return cookie.domain() === viewModel.SelectedDomainName();
+                    return cookie.domain() === _selectedDomainName();
                 });
             });
 
@@ -43,6 +55,6 @@ var CookieThing;
     var ViewModels = CookieThing.ViewModels;
 })(CookieThing || (CookieThing = {}));
 
-var ctvm = new CookieThing.ViewModels.CookieThingViewModel();
-chrome.cookies.getAll({}, function (cookie) { ctvm.cookies.push(cookie); });
-ko.applyBindings(ctvm);
+//var ctvm = new CookieThing.ViewModels.CookieThingViewModel();
+//chrome.cookies.getAll({}, function (cookie) { ctvm.cookies.push(cookie); });
+//ko.applyBindings(ctvm);
