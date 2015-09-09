@@ -39,7 +39,7 @@ describe("For cookies in general", function () {
             cookieTwo.name('cookieTwo');
 
             var cookies = ko.observableArray([cookieOne, cookieTwo]);
-            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies, CookieThing.Codecs.Manifest);
 
             expect(viewModel.Cookies().length).toEqual(2);
         });
@@ -53,7 +53,7 @@ describe("For cookies in general", function () {
             cookieC.name('cookieC');
 
             var cookies = ko.observableArray([cookieC, cookieA, cookieB]);
-            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies, CookieThing.Codecs.Manifest);
 
             expect(viewModel.Cookies()).toEqual([cookieA, cookieB, cookieC]);
         });
@@ -67,7 +67,7 @@ describe("For cookies in general", function () {
             cookieC.name('cookieC');
 
             var cookies = ko.observableArray([cookieC, cookieA, cookieB]);
-            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies, CookieThing.Codecs.Manifest);
 
             expect(viewModel.SelectedCookie()).toBe(cookieA);
         });
@@ -76,7 +76,37 @@ describe("For cookies in general", function () {
 
     describe("selecting a cookie", function () {
 
-        it("has its value decoded by the selected codec.");
+        it("has its value decoded by the selected codec.", function () {
+
+            var cookieA = new CookieThing.Models.Cookie();
+            cookieA.name('cookieA');
+            var encodedValueA = 1;
+            cookieA.value(encodedValueA);
+
+            var cookieB = new CookieThing.Models.Cookie();
+            cookieB.name('cookieB');
+            var encodedValueB = 2;
+            cookieB.value(encodedValueB);
+
+            var cookies = ko.observableArray([cookieA, cookieB]);
+
+            var fakeCodec = function () {
+                    this.FriendlyName = 'Fake Codec';
+                    this.Description = 'Fake Codec';
+                    this.Encode = function (decodedValue) { return decodedValue * 3; }
+                    this.Decode = function (encodedValue) { return encodedValue / 3; }
+                }
+            fakeCodecManifest = [ new fakeCodec() ]
+
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies, fakeCodecManifest);
+
+            viewModel.SelectedCookie(cookieB);
+            var actualDecodedValue = viewModel.SelectedCookieDecodedValue();
+            var expectedDecodedValue = 6;
+
+            expect(actualDecodedValue).toEqual(expectedDecodedValue);
+
+        });
 
     });
 
@@ -95,7 +125,7 @@ describe("For domains in general", function () {
             cookieC.domain('domainC');
 
             var cookies = ko.observableArray([cookieC, cookieA, cookieB]);
-            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies, CookieThing.Codecs.Manifest);
 
             expect(viewModel.DomainNames()).toEqual(['domainA', 'domainB', 'domainC']);
         });
@@ -109,7 +139,7 @@ describe("For domains in general", function () {
             cookieC.domain('domainC');
 
             var cookies = ko.observableArray([cookieC, cookieA, cookieB]);
-            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies, CookieThing.Codecs.Manifest);
 
             expect(viewModel.DomainNames()).toEqual(['domainA', 'domainB', 'domainC']);
         });
@@ -123,7 +153,7 @@ describe("For domains in general", function () {
             cookieC.domain('domainC');
 
             var cookies = ko.observableArray([cookieC, cookieA, cookieB]);
-            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies, CookieThing.Codecs.Manifest);
 
             expect(viewModel.SelectedDomainName()).toEqual('domainA');
         });
@@ -146,7 +176,7 @@ describe("For domains in general", function () {
             cookieC.domain('domain2');
 
             var cookies = ko.observableArray([cookieA, cookieB, cookieC]);
-            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies, CookieThing.Codecs.Manifest);
             viewModel.SelectedDomainName('domain2');
 
             expect(viewModel.CookiesForSelectedDomain()).toEqual([cookieB, cookieC])      
@@ -166,7 +196,7 @@ describe("For domains in general", function () {
             cookieC.domain('domain2');
 
             var cookies = ko.observableArray([cookieA, cookieB, cookieC]);
-            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies, CookieThing.Codecs.Manifest);
             viewModel.SelectedDomainName('domain2');
 
             expect(viewModel.SelectedCookie().name()).toEqual(cookieB.name())
@@ -181,14 +211,14 @@ describe("For codecs in general", function () {
     describe("the codecs list", function () {
 
         it("is set by default.", function () {
-            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(new ko.observable([]));
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(new ko.observable([]), CookieThing.Codecs.Manifest);
             var expectedCodecNames = ['Base64','Base64-Url Encoding','Url Encoding'];
             var actualCodecNames = _.map(viewModel.Codecs, function (codec) { return codec.FriendlyName; });
             expect(actualCodecNames).toEqual(expectedCodecNames);
         });
 
         it("has the first codec selected by default.", function () {
-            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(new ko.observable([]));
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(new ko.observable([]), CookieThing.Codecs.Manifest);
             var expectedCodecName = 'Base64';
             var actualCodecName = viewModel.SelectedCodec().FriendlyName;
             expect(actualCodecName).toEqual(expectedCodecName);

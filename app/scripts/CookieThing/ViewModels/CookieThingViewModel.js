@@ -7,7 +7,7 @@
 var CookieThing;
 (function (CookieThing) {
     (function (ViewModels) {
-        ViewModels.CookieThingViewModel = function (cookies) {
+        ViewModels.CookieThingViewModel = function (cookies, codecManifest) {
             var viewModel = this;
 
             if (!ko.isObservable(cookies)) {
@@ -50,9 +50,23 @@ var CookieThing;
                 });
             });
 
-            this.Codecs = CookieThing.Codecs.Manifest;
+            this.Codecs = codecManifest;
 
             this.SelectedCodec = ko.observable(_.first(this.Codecs));
+
+            //this.SelectedCookieDecodedValue = ko.computed({
+            //    read: function () {
+            //        var encodedValue = viewModel.SelectedCookie().value();
+            //        var decodedValue = viewModel.SelectedCodec().Decode(encodedValue);
+            //        return decodedValue;
+            //    },
+            //    write: function (decodedValue) {
+            //        var encodedValue = viewModel.SelectedCodec().Encode(decodedValue);
+            //        ko.ignoreDependencies(function () {
+            //            viewModel.SelectedCookie().value(encodedValue);
+            //        });
+            //    }
+            //});
 
         }
     })(CookieThing.ViewModels || (CookieThing.ViewModels = {}))
