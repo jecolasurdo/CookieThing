@@ -52,6 +52,8 @@ var CookieThing;
 
             this.Codecs = CookieThing.Codecs.Manifest;
 
+            this.SelectedCodec = ko.observable(_.first(this.Codecs));
+
         }
     })(CookieThing.ViewModels || (CookieThing.ViewModels = {}))
     var ViewModels = CookieThing.ViewModels;

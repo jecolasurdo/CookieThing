@@ -187,9 +187,12 @@ describe("For codecs in general", function () {
             expect(actualCodecNames).toEqual(expectedCodecNames);
         });
 
-        it("is sorted alphabetically by friendly name.")
-
-        it("has the first codec selected by default.");
+        it("has the first codec selected by default.", function () {
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(new ko.observable([]));
+            var expectedCodecName = 'Base64';
+            var actualCodecName = viewModel.SelectedCodec().FriendlyName;
+            expect(actualCodecName).toEqual(expectedCodecName);
+        });
 
     });
 
