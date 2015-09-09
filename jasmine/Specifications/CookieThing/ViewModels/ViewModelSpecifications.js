@@ -88,15 +88,15 @@ describe("For cookies in general", function () {
             var encodedValueB = 2;
             cookieB.value(encodedValueB);
 
-            var cookies = ko.observableArray([cookieA, cookieB]);
+            var cookies = ko.observable([cookieA, cookieB]);
 
             var fakeCodec = function () {
                     this.FriendlyName = 'Fake Codec';
                     this.Description = 'Fake Codec';
-                    this.Encode = function (decodedValue) { return decodedValue * 3; }
-                    this.Decode = function (encodedValue) { return encodedValue / 3; }
+                    this.Encode = function (decodedValue) { return decodedValue / 3; }
+                    this.Decode = function (encodedValue) { return encodedValue * 3; }
                 }
-            fakeCodecManifest = [ new fakeCodec() ]
+            fakeCodecManifest = [new fakeCodec()];
 
             var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies, fakeCodecManifest);
 

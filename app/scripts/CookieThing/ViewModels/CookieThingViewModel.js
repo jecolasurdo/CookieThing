@@ -54,6 +54,17 @@ var CookieThing;
 
             this.SelectedCodec = ko.observable(_.first(this.Codecs));
 
+            this.SelectedCookieDecodedValue = ko.computed({
+                read: function() {
+                    var encodedValue = viewModel.SelectedCookie().value();
+                    var decodedValue = viewModel.SelectedCodec().Decode(encodedValue);
+                    return decodedValue;
+                },
+                write: function(decodedValue) {
+                    return 'write';
+                }
+            });
+
             //this.SelectedCookieDecodedValue = ko.computed({
             //    read: function () {
             //        var encodedValue = viewModel.SelectedCookie().value();
