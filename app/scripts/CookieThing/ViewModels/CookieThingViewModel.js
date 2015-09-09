@@ -50,6 +50,8 @@ var CookieThing;
                 });
             });
 
+            this.Codecs = CookieThing.Codecs.Manifest;
+
         }
     })(CookieThing.ViewModels || (CookieThing.ViewModels = {}))
     var ViewModels = CookieThing.ViewModels;

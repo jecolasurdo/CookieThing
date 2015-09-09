@@ -180,7 +180,12 @@ describe("For codecs in general", function () {
 
     describe("the codecs list", function () {
 
-        it("is set by default.");
+        it("is set by default.", function () {
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(new ko.observable([]));
+            var expectedCodecNames = ['Base64','Base64-Url Encoding','Url Encoding'];
+            var actualCodecNames = _.map(viewModel.Codecs, function (codec) { return codec.FriendlyName; });
+            expect(actualCodecNames).toEqual(expectedCodecNames);
+        });
 
         it("is sorted alphabetically by friendly name.")
 
