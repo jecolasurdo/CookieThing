@@ -55,7 +55,11 @@ var CookieThing;
             this.SelectedCodec = ko.observable(_.first(this.Codecs));
 
             this.SelectedCookieDecodedValue = ko.computed({
-                read: function() {
+                read: function () {
+                    if (viewModel.SelectedCookie() === undefined) {
+                        return '';
+                    }
+
                     var encodedValue = viewModel.SelectedCookie().value();
                     var decodedValue = viewModel.SelectedCodec().Decode(encodedValue);
                     return decodedValue;

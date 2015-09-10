@@ -5,25 +5,25 @@ describe("The viewmodel in general", function () {
     it("must be initialized with an observable array.", function () {
         expect(function () {
             var notTheRightObjectType = { someProperty: 'wtf' };
-            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(notTheRightObjectType);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(notTheRightObjectType, CookieThing.Codecs.Manifest);
         }).toThrow(new Error("The view model must be initialized with an observable array."));
     });
 
     it("must be initialized with an observable array of cookie objects.", function () {
         expect(function () {
             var arrayOfTheWrongType = ko.observableArray(['wrong type']);
-            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(arrayOfTheWrongType);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(arrayOfTheWrongType, CookieThing.Codecs.Manifest);
         }).toThrow(new Error("The view model must be initialized with an observable array of cookies."));
     });
 
     it("doesn't throw an exception when initialized with the correct parameter type.", function () {
         var theCorrectObjectType = ko.observableArray([new CookieThing.Models.Cookie()]);
-        var viewModel = new CookieThing.ViewModels.CookieThingViewModel(theCorrectObjectType);
+        var viewModel = new CookieThing.ViewModels.CookieThingViewModel(theCorrectObjectType, CookieThing.Codecs.Manifest);
     });
 
     it("doesn't throw an exception when there are no cookies available.", function () {
         var noCookiesPresent = ko.observableArray([]);
-        var viewModel = new CookieThing.ViewModels.CookieThingViewModel(noCookiesPresent);
+        var viewModel = new CookieThing.ViewModels.CookieThingViewModel(noCookiesPresent, CookieThing.Codecs.Manifest);
     });
 
 });
