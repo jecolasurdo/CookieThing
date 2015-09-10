@@ -211,15 +211,24 @@ describe("For codecs in general", function () {
     describe("the codecs list", function () {
 
         it("is set by default.", function () {
-            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(new ko.observable([]), CookieThing.Codecs.Manifest);
-            var expectedCodecNames = ['Base64','Base64-Url Encoding','Url Encoding'];
+            var codecManifest = [
+                new function() {this.FriendlyName = 'some codec';}
+            ];
+
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(new ko.observable([]), codecManifest);
+            var expectedCodecNames = ['some codec'];
             var actualCodecNames = _.map(viewModel.Codecs, function (codec) { return codec.FriendlyName; });
             expect(actualCodecNames).toEqual(expectedCodecNames);
         });
 
         it("has the first codec selected by default.", function () {
-            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(new ko.observable([]), CookieThing.Codecs.Manifest);
-            var expectedCodecName = 'Base64';
+            var codecManifest = [
+                new function () { this.FriendlyName = 'codec 1'; },
+                new function () { this.FriendlyName = 'codec 2'; }
+            ];
+
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(new ko.observable([]), codecManifest);
+            var expectedCodecName = 'codec 1';
             var actualCodecName = viewModel.SelectedCodec().FriendlyName;
             expect(actualCodecName).toEqual(expectedCodecName);
         });
