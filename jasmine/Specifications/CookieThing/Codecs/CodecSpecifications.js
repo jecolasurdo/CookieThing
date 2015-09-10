@@ -20,6 +20,24 @@ describe("For the codecs in general", function () {
         });
     });
 
+    describe("the NilCodec", function () {
+        it("encodes values properly.", function () {
+            var codec = new CookieThing.Codecs.NilCodec();
+            var rawValue = 'Value';
+            var actualResult = codec.Decode(rawValue);
+            var expectedResult = rawValue;
+            expect(actualResult).toEqual(expectedResult);
+        });
+
+        it("decodes values properly.", function () {
+            var codec = new CookieThing.Codecs.NilCodec();
+            var rawValue = 'Value';
+            var actualResult = codec.Encode(rawValue);
+            var expectedResult = rawValue;
+            expect(actualResult).toEqual(expectedResult);
+        });
+    });
+
     describe("the Base64UrlCodec", function () {
         it("does nothing at the moment.");
     });
