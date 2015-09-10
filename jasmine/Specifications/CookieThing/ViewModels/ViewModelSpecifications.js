@@ -284,7 +284,28 @@ describe("For codecs in general", function () {
 
     describe("Changing the decoded value of the selected cookie", function () {
 
-        it("encodes the raw value.");
+        it("encodes the raw value.", function () {
+                var cookie = new CookieThing.Models.Cookie();
+                cookie.value(3);
+                var cookies = ko.observable([cookie]);
+                var codec = new function () {
+                    this.Encode = function (decodedValue) { return decodedValue * 3; }
+                    this.Decode = function (encodedValue) { return encodedValue / 3; }
+                }
+                var codecManifest = [codec];
+                var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies, codecManifest);
+
+                var actualInitialEncodedValue = viewModel.SelectedCookie().value();
+                var expectedInitialEncodedValue = 3;
+
+                expect(actualInitialEncodedValue).toEqual(expectedInitialEncodedValue);
+
+                viewModel.SelectedCookieDecodedValue(2);
+                var actualNewEncodedValue = viewModel.SelectedCookie().value();
+                var expectedNewEncodedValue = 6;
+
+                expect(actualNewEncodedValue).toEqual(expectedNewEncodedValue);
+        });
 
     });
 
