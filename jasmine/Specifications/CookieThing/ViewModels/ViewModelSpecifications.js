@@ -228,7 +228,30 @@ describe("For codecs in general", function () {
 
     describe("Selecting a codec", function () {
 
-        it("sets the decoded value of the cookie.");
+        it("sets the decoded value of the cookie.", function() {
+            var cookie = new CookieThing.Models.Cookie();
+            cookie.value(2);
+            var cookies = ko.observable([cookie]);
+            var codecA = new function () {
+                this.Encode = function (decodedValue) { return decodedValue / 3; }
+                this.Decode = function (encodedValue) { return encodedValue * 3; }
+            }
+            var codecB = new function () {
+                this.Encode = function (decodedValue) { return decodedValue / 2; }
+                this.Decode = function (encodedValue) { return encodedValue * 2; }
+            }
+            var codecManifest = [codecA, codecB];
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies, codecManifest);
+
+            // simulate toggling between codecs
+            viewModel.SelectedCodec(codecA);
+            viewModel.SelectedCodec(codecB);
+
+            var actualDecodedValue = viewModel.SelectedCookieDecodedValue();
+            var expectedDecodedValue = 4;
+
+            expect(actualDecodedValue).toEqual(expectedDecodedValue);        
+        });
 
     });
 
