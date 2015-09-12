@@ -144,6 +144,20 @@ describe("For domains in general", function () {
             expect(viewModel.DomainNames()).toEqual(['domainA', 'domainB', 'domainC']);
         });
 
+        it("has the distinct list of domain names.", function () {
+            var cookieA = new CookieThing.Models.Cookie();
+            cookieA.domain('domainA');
+            var cookieB = new CookieThing.Models.Cookie();
+            cookieB.domain('domainB');
+            var cookieC = new CookieThing.Models.Cookie();
+            cookieC.domain('domainB');
+
+            var cookies = ko.observableArray([cookieA, cookieB, cookieC]);
+            var viewModel = new CookieThing.ViewModels.CookieThingViewModel(cookies, CookieThing.Codecs.Manifest);
+
+            expect(viewModel.DomainNames()).toEqual(['domainA', 'domainB']);
+        })
+
         it("has the first domain selected by default.", function () {
             var cookieA = new CookieThing.Models.Cookie();
             cookieA.domain('domainA');

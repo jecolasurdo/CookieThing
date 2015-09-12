@@ -25,9 +25,13 @@ var CookieThing;
             this.SelectedCookie = ko.observable(_.first(viewModel.Cookies()));
 
             this.DomainNames = ko.computed(function () {
-                return _.sortBy(
-                    _.map(viewModel.Cookies(), function (cookie) { return cookie.domain(); })
-                   , function (domainName) { return domainName; })
+                return _.unique(
+                    _.sortBy(_.map(viewModel.Cookies(), function (cookie) { return cookie.domain(); })
+                             , function (domainName) { return domainName; }
+                             )
+                    , true // is sorted
+                    , function (domainName) { return domainName; }
+                );
             });
 
             var _selectedDomainName = ko.observable(_.first(viewModel.DomainNames()));
