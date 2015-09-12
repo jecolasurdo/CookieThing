@@ -75,8 +75,3 @@ var CookieThing;
     })(CookieThing.ViewModels || (CookieThing.ViewModels = {}))
     var ViewModels = CookieThing.ViewModels;
 })(CookieThing || (CookieThing = {}));
-
-
-//var ctvm = new CookieThing.ViewModels.CookieThingViewModel();
-//chrome.cookies.getAll({}, function (cookie) { ctvm.cookies.push(cookie); });
-//ko.applyBindings(ctvm);
