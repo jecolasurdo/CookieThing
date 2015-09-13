@@ -5,7 +5,7 @@ describe("For the codecs in general", function () {
     describe("the Base64Codec", function () {
         it("encodes values properly.", function () {
             var codec = new CookieThing.Codecs.Base64Codec();
-            var rawValue = 'Base64 Value';        
+            var rawValue = 'Base64 Value';
             var actualResult = codec.Encode(rawValue);
             var expectedResult = 'QmFzZTY0IFZhbHVl';
             expect(actualResult).toEqual(expectedResult);
@@ -18,6 +18,14 @@ describe("For the codecs in general", function () {
             var expectedResult = 'Base64 Value';
             expect(actualResult).toEqual(expectedResult);
         });
+
+        it("handles decoding-errors gracefully.", function () {
+            var codec = new CookieThing.Codecs.Base64Codec();
+            var actualResult = codec.Decode(function () { throw new Error('Error'); });
+            var expectedResult = 'The raw value could not be decoded.';
+            expect(actualResult).toEqual(expectedResult);
+        });
+
     });
 
     describe("the NilCodec", function () {
@@ -36,13 +44,14 @@ describe("For the codecs in general", function () {
             var expectedResult = rawValue;
             expect(actualResult).toEqual(expectedResult);
         });
+
     });
 
     describe("the Base64UrlCodec", function () {
         it("does nothing at the moment.");
     });
 
-    describe("the UrlEncodingCodec", function() {
+    describe("the UrlEncodingCodec", function () {
         it("does nothing at the moment.")
     });
 

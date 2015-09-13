@@ -12,7 +12,12 @@
             }
 
             this.Decode = function (encodedValue) {
-                return atob(encodedValue);
+                try {
+                    return atob(encodedValue);
+                }
+                catch(err) {
+                    return 'The raw value could not be decoded.';
+                }
             }
 
         }
