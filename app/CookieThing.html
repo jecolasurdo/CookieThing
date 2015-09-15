@@ -96,19 +96,19 @@
                     <div class="col-sm-5ths">
                         <div class="input-group">
                             <span class="input-group-addon">Path</span>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" data-bind="value: SelectedCookie().path">
                         </div>
                     </div>
                     <div class="col-sm-5ths">
                         <div class="input-group">
                             <span class="input-group-addon">Expiration</span>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" data-bind="value: SelectedCookie().expiration">
                         </div>
                     </div>
                     <div class="col-sm-5ths">
                         <div class="input-group">
                             <span class="input-group-addon">Store ID</span>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" data-bind="value: SelectedCookie().storeId">
                         </div>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
             <div style="clear:both;">
                 <div>
                     <div>Value (Raw)</div>
-                    <textarea class="full-width raw-value"></textarea>
+                    <textarea class="full-width raw-value" data-bind="textInput: SelectedCookie().value"></textarea>
                 </div>
                 <div>
                     <div style="display: inline-block; width: 100%; position: relative;">
@@ -148,17 +148,17 @@
                             <div class="dropdown">
                                 Algorithm:
                                 <button class="btn btn-sm btn- dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    <span></span>
+                                    <span data-bind="text: SelectedCodec().FriendlyName"></span>
                                     <span class="caret"></span>
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    <li href="#" class="list-group-item"></li>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" data-bind="foreach: Codecs">
+                                    <li href="#" class="list-group-item" data-bind="text: FriendlyName, click: $parent.SelectedCodec($data)"></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div style="clear:both;">
-                        <textarea class="full-width raw-value"></textarea>
+                        <textarea class="full-width raw-value" data-bind="textInput: SelectedCookieDecodedValue"></textarea>
                     </div>
                 </div>
             </div>

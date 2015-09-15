@@ -8,12 +8,12 @@
             this.Description = 'Converts to and from a URL encoded string.'
 
             this.Encode = function (decodedValue) {
-                var encodedValue = decodedValue;
+                var encodedValue = encodeURI(decodedValue);
                 return encodedValue;
             }
 
             this.Decode = function (encodedValue) {
-                var decodedValue = encodedValue;
+                var decodedValue = decodeURI(encodedValue);
                 return decodedValue;
             }
 

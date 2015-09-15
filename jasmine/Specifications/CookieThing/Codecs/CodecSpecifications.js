@@ -52,7 +52,21 @@ describe("For the codecs in general", function () {
     });
 
     describe("the UrlEncodingCodec", function () {
-        it("does nothing at the moment.")
+        it("encodes values properly.", function () {
+            var codec = new CookieThing.Codecs.UrlEncodingCodec();
+            var encodedValue = 'this%20is%20a%20test';
+            var actualResult = codec.Decode(encodedValue);
+            var expectedResult = 'this is a test';
+            expect(actualResult).toEqual(expectedResult);
+        });
+
+        it("decodes values properly.", function () {
+            var codec = new CookieThing.Codecs.UrlEncodingCodec();
+            var decodedValue = 'this is a test';
+            var actualResult = codec.Encode(decodedValue);
+            var expectedResult = 'this%20is%20a%20test';
+            expect(actualResult).toEqual(expectedResult);
+        });
     });
 
 });
