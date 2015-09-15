@@ -2,9 +2,30 @@
 <html>
 <head>
     <title>CookieThing</title>
+
+    <!-- Styles -->
     <link href="styles/CookieThing.css" rel="stylesheet" />
     <link href="styles/bootstrap.css" rel="stylesheet" />
     <link href="styles/bootstrap-theme.css" rel="stylesheet" />
+
+    <!-- Frameworks -->
+    <script src="scripts/jquery-2.1.4.js"></script>
+    <script src="scripts/knockout-3.3.0.debug.js"></script>
+    <script src="scripts/underscore.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+
+    <!-- Codecs -->
+    <script src="scripts/CookieThing/Codecs/Base64Codec.js"></script>
+    <script src="scripts/CookieThing/Codecs/UrlEncodingCodec.js"></script>
+    <script src="scripts/CookieThing/Codecs/Base64UrlCodec.js"></script>
+    <script src="scripts/CookieThing/Codecs/NilCodec.js"></script>
+    <script src="scripts/CookieThing/Codecs/Manifest.js"></script>
+
+    <!-- Internals -->
+    <script src="scripts/CookieThing/Models/Cookie.js"></script>
+    <script src="scripts/CookieThing/ViewModels/CookieThingViewModel.js"></script>
+    <script src="scripts/CookieThing/ViewModels/ViewModelBinder.js"></script>
+
 </head>
 <body>
     <div class="page">
@@ -33,7 +54,7 @@
                         Domains
                     </a>
                     <div class="scrollable-list" data-bind="foreach: DomainNames">
-                        <a href="#" class="list-group-item" data-bind="text: $data, click: $parent.SelectedDomainName($data)"></a>
+                        <a href="#" class="list-group-item" data-bind="text: $data, click: function() { $parent.SelectedDomainName($data); }"></a>
                     </div>
                 </div>
                 <div class="pull-right">
@@ -47,7 +68,7 @@
                         Cookies
                     </a>
                     <div class="scrollable-list" data-bind="foreach: CookiesForSelectedDomain">
-                        <a href="#" class="list-group-item" data-bind="text: $data.name"></a>
+                        <a href="#" class="list-group-item" data-bind="text: name, click: function() { $parent.SelectedCookie($data); }"></a>
                     </div>
                 </div>
                 <div class="pull-right">
@@ -63,13 +84,13 @@
                     <div class="col-sm-5ths">
                         <div class="input-group">
                             <span class="input-group-addon">Name</span>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" data-bind="value: SelectedCookie().name">
                         </div>
                     </div>
                     <div class="col-sm-5ths">
                         <div class="input-group">
                             <span class="input-group-addon">Domain</span>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" data-bind="value: SelectedCookie().domain">
                         </div>
                     </div>
                     <div class="col-sm-5ths">
@@ -148,25 +169,6 @@
             <button class="btn">Reload</button>
         </div>
     </div>
-
-    <!-- Frameworks -->
-    <script src="scripts/jquery-2.1.4.js"></script>
-    <script src="scripts/knockout-3.3.0.debug.js"></script>
-    <script src="scripts/underscore.js"></script>
-    <script src="scripts/bootstrap.js"></script>
-
-    <!-- Codecs -->
-    <script src="scripts/CookieThing/Codecs/Base64Codec.js"></script>
-    <script src="scripts/CookieThing/Codecs/UrlEncodingCodec.js"></script>
-    <script src="scripts/CookieThing/Codecs/Base64UrlCodec.js"></script>
-    <script src="scripts/CookieThing/Codecs/NilCodec.js"></script>
-    <script src="scripts/CookieThing/Codecs/Manifest.js"></script>
-
-    <!-- Internals -->
-    <script src="scripts/CookieThing/Models/Cookie.js"></script>
-    <script src="scripts/CookieThing/ViewModels/CookieThingViewModel.js"></script>
-    <script src="scripts/CookieThing/ViewModels/ViewModelBinder.js"></script>
-
 </body>
 </html>
 
