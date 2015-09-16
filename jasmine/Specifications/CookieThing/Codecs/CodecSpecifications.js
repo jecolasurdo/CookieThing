@@ -26,6 +26,23 @@ describe("For the codecs in general", function () {
             expect(actualResult).toEqual(expectedResult);
         });
 
+        it("sets LastValueDecodedSuccessfully to true by default.", function () {
+            var codec = new CookieThing.Codecs.Base64Codec();
+            expect(codec.LastValueDecodedSuccessfully()).toEqual(true);
+        });
+
+        it("sets LastValueDecodedSuccessfully to true if the raw value could be decoded.", function () {
+            var codec = new CookieThing.Codecs.Base64Codec();
+            codec.Decode('QmFzZTY0IFZhbHVl');
+            expect(codec.LastValueDecodedSuccessfully()).toEqual(true);
+        });
+
+        it("sets LastValueDecodedSuccessfully to false if the raw value could not be decoded.", function () {
+            var codec = new CookieThing.Codecs.Base64Codec();
+            codec.Decode(function () { throw new Error('Error'); });
+            expect(codec.LastValueDecodedSuccessfully()).toEqual(false);
+        });
+
     });
 
     describe("the NilCodec", function () {
@@ -43,6 +60,11 @@ describe("For the codecs in general", function () {
             var actualResult = codec.Encode(rawValue);
             var expectedResult = rawValue;
             expect(actualResult).toEqual(expectedResult);
+        });
+
+        it("sets LastValueDecodedSuccessfully to true by default.", function () {
+            var codec = new CookieThing.Codecs.NilCodec();
+            expect(codec.LastValueDecodedSuccessfully()).toEqual(true);
         });
 
     });
@@ -66,6 +88,11 @@ describe("For the codecs in general", function () {
             var actualResult = codec.Encode(decodedValue);
             var expectedResult = 'this%20is%20a%20test';
             expect(actualResult).toEqual(expectedResult);
+        });
+
+        it("sets LastValueDecodedSuccessfully to true by default.", function () {
+            var codec = new CookieThing.Codecs.UrlEncodingCodec();
+            expect(codec.LastValueDecodedSuccessfully()).toEqual(true);
         });
     });
 

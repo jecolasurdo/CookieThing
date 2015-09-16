@@ -134,7 +134,7 @@
                         </div>
                     </div>
                     <div style="clear:both;">
-                        <textarea class="full-width raw-value" data-bind="textInput: SelectedCookieDecodedValue"></textarea>
+                        <textarea class="full-width raw-value" data-bind="textInput: SelectedCookieDecodedValue, enable: SelectedCodec().LastValueDecodedSuccessfully"></textarea>
                     </div>
                 </div>
             </div>
@@ -172,3 +172,4 @@
 </body>
 </html>
 
+`

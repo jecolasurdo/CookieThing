@@ -15,6 +15,8 @@
                 return encodedValue;
             }
 
+            this.LastValueDecodedSuccessfully = ko.observable(true);
+
         }
     })(CookieThing.Codecs || (CookieThing.Codecs = {}));
     var Codecs = CookieThing.Codecs;

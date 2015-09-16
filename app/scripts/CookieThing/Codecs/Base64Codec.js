@@ -13,12 +13,16 @@
 
             this.Decode = function (encodedValue) {
                 try {
+                    this.LastValueDecodedSuccessfully(true);
                     return atob(encodedValue);
                 }
-                catch(err) {
+                catch (err) {
+                    this.LastValueDecodedSuccessfully(false);
                     return 'The raw value could not be decoded.';
                 }
             }
+
+            this.LastValueDecodedSuccessfully = ko.observable(true);
 
         }
     })(CookieThing.Codecs || (CookieThing.Codecs = {}));
