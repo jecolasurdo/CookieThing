@@ -41,6 +41,7 @@
   <ItemGroup>
     <Content Include="app\background.js" />
     <Content Include="app\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app\img\CookieThing.png" />
     <Content Include="app\scripts\CookieThing\Codecs\NilCodec.js" />
     <Content Include="app\scripts\CookieThing\Codecs\Base64Codec.js" />
     <Content Include="app\scripts\CookieThing\Codecs\Base64UrlCodec.js" />
