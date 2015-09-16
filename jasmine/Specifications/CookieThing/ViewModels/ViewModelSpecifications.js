@@ -26,6 +26,8 @@ describe("The viewmodel in general", function () {
         var viewModel = new CookieThing.ViewModels.CookieThingViewModel(noCookiesPresent, CookieThing.Codecs.Manifest);
     });
 
+    it("includes a time (hh:mm:ss) that represents the last time the viewmodel was syncronized with the browser cookies.");
+
 });
 
 describe("For cookies in general", function () {
@@ -191,6 +193,8 @@ describe("For domains in general", function () {
             expect(viewModel.DomainNames()).toEqual(['domainA', 'domainB']);
         })
 
+        it("sets the number of domains");
+
         it("has the first domain selected by default.", function () {
             var cookieA = new CookieThing.Models.Cookie();
             cookieA.domain('domainA');
@@ -228,6 +232,8 @@ describe("For domains in general", function () {
 
             expect(viewModel.CookiesForSelectedDomain()).toEqual([cookieB, cookieC])      
         });
+
+        it("sets the number of cookies within the selected domain.");
 
         it("sets the first cookie in the domain as the selected cookie.", function () {
             var cookieA = new CookieThing.Models.Cookie();

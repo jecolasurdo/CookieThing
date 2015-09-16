@@ -50,7 +50,6 @@
     <Content Include="app\scripts\CookieThing\Models\Cookie.js" />
     <Content Include="app\scripts\CookieThing\Models\RawCookie.js" />
     <Content Include="app\scripts\CookieThing\ViewModels\CookieThingViewModel.js" />
-    <Content Include="app\scripts\CookieThing\ViewModels\oldguttedviewmodel.js" />
     <Content Include="app\scripts\CookieThing\ViewModels\ViewModelBinder.js" />
     <Content Include="app\scripts\underscore.js" />
     <Content Include="app\styles\bootstrap-theme.css" />

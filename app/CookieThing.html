@@ -59,14 +59,14 @@
                 <div class="row">
                     <div class="col-sm-5ths">
                         <div class="input-group">
-                            <span class="input-group-addon">Name</span>
-                            <input type="text" class="form-control" data-bind="value: SelectedCookie().name">
+                            <span class="input-group-addon">Domain</span>
+                            <input type="text" class="form-control" data-bind="value: SelectedCookie().domain">
                         </div>
                     </div>
                     <div class="col-sm-5ths">
                         <div class="input-group">
-                            <span class="input-group-addon">Domain</span>
-                            <input type="text" class="form-control" data-bind="value: SelectedCookie().domain">
+                            <span class="input-group-addon">Name</span>
+                            <input type="text" class="form-control" data-bind="value: SelectedCookie().name">
                         </div>
                     </div>
                     <div class="col-sm-5ths">
@@ -78,7 +78,7 @@
                     <div class="col-sm-5ths">
                         <div class="input-group">
                             <span class="input-group-addon">Expiration</span>
-                            <input type="text" class="form-control" data-bind="value: SelectedCookie().expiration">
+                            <input type="text" class="form-control" data-bind="value: SelectedCookie().expirationDate">
                         </div>
                     </div>
                     <div class="col-sm-5ths">
@@ -128,7 +128,7 @@
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" data-bind="foreach: Codecs">
-                                    <li href="#" class="list-group-item" data-bind="text: FriendlyName, click: $parent.SelectedCodec($data)"></li>
+                                    <li href="#" class="list-group-item" data-bind="text: FriendlyName, click: function() { $parent.SelectedCodec($data); }"></li>
                                 </ul>
                             </div>
                         </div>
